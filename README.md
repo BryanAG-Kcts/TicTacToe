@@ -1,6 +1,6 @@
 # TicTacToe
 
-Selecciona un pais y observa algunas caracteristicas
+Simple y entretenido, Tic Tac Toe con amigos
 
 ## 🛠 Installation & run locally
 
