@@ -29,7 +29,7 @@ export const Board = () => {
     }
 
     const checkWinner = board => {
-        combos.forEach(combo => {
+        for(const combo of combos){
             const [a, b, c] = combo;
 
             if(
@@ -39,13 +39,11 @@ export const Board = () => {
             ){
                 setWinner(board[a]);
                 confetti()
-                return
+                return 
             }
-        });
+        }
 
-
-        let filterBoard = board.filter(pos => pos === null)
-        
+        let filterBoard = board.filter(pos => pos === null)    
         if(filterBoard.length === 0) {
             setWinner("?")
         }
@@ -71,15 +69,14 @@ export const Board = () => {
 
         setboardPositon(newBoard)
         setTurnSelector(!turnSelector);
-
         checkWinner(newBoard)
     }
 
     return(
         <>
-            <main className="flex flex-col gap-5 items-center">
+            <main className="flex flex-col items-center gap-5">
 
-                <div className="w-64 h-64 border-4 border-black rounded-md grid grid-cols-3 grid-rows-3">
+                <div className="grid w-64 h-64 grid-cols-3 grid-rows-3 border-4 border-black rounded-md">
                     {
                         boardPositons.map((boardPosiiton, index) => {
                             return <Square 
@@ -99,7 +96,7 @@ export const Board = () => {
             </main>
 
             <ModalWinner resetGame={resetGame} winner={winner}/> 
-            <h1 className="absolute left-1/2 -translate-x-1/2 bottom-4">Tic Tac Toe</h1>
+            <h1 className="absolute -translate-x-1/2 left-1/2 bottom-4">Tic Tac Toe</h1>
 
         </>
     )
