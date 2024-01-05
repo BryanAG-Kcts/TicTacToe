@@ -13,7 +13,7 @@ export const Board = () => {
 
     const [turnSelector, setTurnSelector] = useState(()=> {
         const turnStorage = window.localStorage.getItem('turn');
-        return Boolean(turnStorage)
+        return turnStorage === "true" ? true : false
     })
 
     const [winner, setWinner] = useState(null)
@@ -61,11 +61,8 @@ export const Board = () => {
         const newBoard = [...boardPositons];
         newBoard[index] = characters[playerPosition];
 
-        
         window.localStorage.setItem('board', JSON.stringify(newBoard))
-        window.localStorage.setItem('turn', JSON.stringify(!turnSelector))
-
-        
+        window.localStorage.setItem('turn', !turnSelector)
 
         setboardPositon(newBoard)
         setTurnSelector(!turnSelector);
@@ -87,7 +84,7 @@ export const Board = () => {
                             />
                         })
                     }
-                </div>
+                </div>  
 
                 <p>turno de : {characters[Number(turnSelector)]}</p>
 
